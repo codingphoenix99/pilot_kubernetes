@@ -1,0 +1,39 @@
+How can we count number of pods in a namespace ?
+#kubectl get pods -n "yournamespacename"
+#kubectl get pods -n myspace
+
+How can we create a pod , given base image is nginx ?
+#kubectl run "yourpodname" --image="baseimagename" 
+#kubectl run myimage --image=nginx 
+
+How do we need know details of a specific pod ?
+#kubectl describe pod "yourpodname" -n "yournamespacename"
+#kubectl describe pod myimage -n myspace 
+-- look for the container row 
+
+How do we know which node that pods are placed on ?
+#kubectl get pods -n "yiurnamespacename" -o wide 
+#kubectl get pods -n myspace -o wide 
+
+How many containers are part of your pod , Their states & what are the images that they are running on?
+#kubectl describe pod "yourpodname" -n "yournamespacename"
+#kubectl describe pod myimage -n myspace 
+--look at the containers rows 
+
+How can we delete a pod ? 
+#kubectl delete pod "mypodname" -n "mynamespacename"
+#kubectl delete pod "myimage" -n "myspace" 
+
+Create a new pod with the YAML File ?
+#kubectl run "yourpodname" --image="yourbaseimagename" --dry-run=client -o yaml > "yourfilename".yaml 
+#kubectl run "myimage2" --image=redis --dry-run=client -o yaml > redis.yaml
+
+
+
+
+
+
+
+
+
+
