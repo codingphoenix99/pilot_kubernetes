@@ -1,3 +1,5 @@
+*** The Basic Kubernetes Commands ***
+
 How can we count number of pods in a namespace ?
 #kubectl get pods -n "yournamespacename"
 #kubectl get pods -n myspace
@@ -12,7 +14,7 @@ How do we need know details of a specific pod ?
 -- look for the container row 
 
 How do we know which node that pods are placed on ?
-#kubectl get pods -n "yiurnamespacename" -o wide 
+#kubectl get pods -n "yournamespacename" -o wide 
 #kubectl get pods -n myspace -o wide 
 
 How many containers are part of your pod , Their states & what are the images that they are running on?
@@ -28,6 +30,52 @@ Create a new pod with the YAML File ?
 #kubectl run "yourpodname" --image="yourbaseimagename" --dry-run=client -o yaml > "yourfilename".yaml 
 #kubectl run "myimage2" --image=redis --dry-run=client -o yaml > redis.yaml
 
+
+*** The Replicaset Commands ***
+
+Creating a Replicaset using the Replicaset Definition YAML File 
+#kubectl create -f "Your Replicaset YAML File Name"
+#kubectl create -f rc-definition.yml 
+
+To see the Replicasets 
+#kubectl get replicaset
+
+To see the Pods created by the Replicaset
+#kubectl get pods
+
+To delete the Replicaset 
+#kubectl delete replicaset "replicasetname"
+#kubectl delete replicaset my-replicaset 
+
+For editing the Replicaset
+In this commnds we can use replicaset or rs , both are same 
+#kubectl edit rs "my replicaset name"
+#kubectl edit rs my-rcset 
+
+For scaling purpose , means for incresing or decresing the replicas count 
+We can edit the Replicaset definition File & run the below command 
+#kubectl replace -f "replicaset_definition YAML File"
+#kubectl replace -f myreplicaset-definition.YML
+
+Without editing the defintion file 
+#kubectl scale -replicas="any number that you need" -f "your definition YAML File"
+#kubectl scale -replicas=6 -f myreplicaset-definition.YML
+or by running the scale on replicaset itself
+#kubectl scale rs "your replicaset name" --replicas="the number that you need"
+#kubectl scale rs my-replicaset --replicas=5
+
+
+*** The Deployments Commands ***
+
+For creating the deployment from the Definition File 
+#kubectl create -f "Your deployment  YAML File Name"
+#kubectl create -f my-deployment.yml
+
+For getting the deployments listed 
+#kubectl get deployment
+
+For getting all the obejects
+#kubectl get all
 
 
 
